@@ -1,0 +1,85 @@
+*{
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.menusuperior{
+    top: 0;
+    left: 0;
+    position: fixed;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 6px 0px #0000000D;
+    background-color: #ffffff;
+    z-index: 1;
+
+}
+.menusuperior img{
+    margin-left: 10%;
+    background-color: #ffffff;
+}
+
+.menusuperior ion-icon{
+    width: 42.19px;
+    height: 30.94px;
+    margin-right: 7%;
+    background-color: #ffffff;
+}
+
+.boxmensagens{
+    width: 100%;
+    height: 700px;
+    background-color: #f8f4f4;
+    margin-top: 80px;
+    margin-bottom: 84px;
+    overflow-y: scroll;
+}
+
+.enviar{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;  
+}
+
+.enviar input{
+    height: 40px;
+    width: 70%;
+    border: none;
+    background-color: #ffffff;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-left: 17px;
+    color: black;
+}
+
+.enviar input:focus{
+    border: 1px ridge lightgray;
+    border-radius: 8px;
+    outline: none;
+}
+
+.enviar button{
+    background-color: #ffffff;
+    border: none;
+    width: auto;
+    height: auto;
+    margin-right: 27px;
+}
+
+.enviar button ion-icon{
+    width: 26px;
+    height: 26px;
+}
