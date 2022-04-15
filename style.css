@@ -18,24 +18,28 @@
 
 }
 .menusuperior img{
-    margin-left: 10%;
+    margin-left: 3%;
     background-color: #ffffff;
 }
 
 .menusuperior ion-icon{
     width: 42.19px;
     height: 30.94px;
-    margin-right: 7%;
+    margin-right: 3%;
     background-color: #ffffff;
 }
 
 .boxmensagens{
+    min-height: 700px;
     width: 100%;
-    height: 700px;
+    height: auto;
     background-color: #f8f4f4;
     margin-top: 80px;
     margin-bottom: 84px;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .enviar{
@@ -61,7 +65,7 @@
     line-height: 21px;
     letter-spacing: 0em;
     text-align: left;
-    margin-left: 17px;
+    margin-left: 1.8%;
     color: black;
 }
 
@@ -76,7 +80,7 @@
     border: none;
     width: auto;
     height: auto;
-    margin-right: 27px;
+    margin-right: 2%;
 }
 
 .enviar button ion-icon{
