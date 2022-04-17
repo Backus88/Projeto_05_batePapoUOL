@@ -12,9 +12,30 @@
     <title>Document</title>
 </head>
 <body>
+
+    <div class="ativos">
+        <div class="ativo">
+            <h1>Escolha um contato para enviar mensagem:</h1>
+            <div class="contatos">
+            </div>
+            <h1>Escolha a visibilidade:</h1>
+            <div role="button" class="visibilidade" onclick = "seleciona(this,'seleciona-visibilidade')">
+                <ion-icon name="lock-open"></ion-icon>
+                <h3>Público</h3>
+            </div>
+            <div role="button" class="visibilidade" onclick = "seleciona(this,'seleciona-visibilidade')">
+                <ion-icon name="lock-closed"></ion-icon>
+                <h3>Resevardamente</h3>
+            </div>
+        </div>
+    </div>
+
     <div class="menusuperior">
         <img src="imgs/Logo-Uol.png">
-        <ion-icon name="people"></ion-icon>
+        <button onclick="pegarAtivos()">
+            <ion-icon name="people"></ion-icon>
+        </button>
+        
     </div>
 
     <div class="boxmensagens">
@@ -22,7 +43,10 @@
     </div>
 
     <div class="enviar">
-        <input class="enviamensagem" type="text" placeholder="Escreve aqui...">
+        <div class="enviavariado">
+            <input class="enviamensagem" type="text" placeholder="Escreve aqui...">
+            <h4>Enviando para Todos (publicamente)</h4>
+        </div>
         <button onclick="enviarMensagem()">
             <ion-icon  name="paper-plane-outline"></ion-icon>
         </button>
