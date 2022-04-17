@@ -20,6 +20,12 @@ body::-webkit-scrollbar {
     z-index: 1;
 
 }
+.menusuperior button{
+    background-color: #ffffff;
+    border: none;
+    width: auto;
+    height: auto;
+}
 .menusuperior img{
     margin-left: 3%;
     background-color: #ffffff;
@@ -181,6 +187,8 @@ span{
 .contatos{
     display: flex;
     flex-direction: column;
+    max-height: 50%;
+    overflow-y: scroll;
 }
 
 .contato{

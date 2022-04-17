@@ -11,25 +11,31 @@ let conectado = 0;
 let selecionado = 0;
 let userAtivo = 0;
 let mensagemTipo = 0;
+let mensagemFiltrada = 0;
 
 function filtra(mensagens){
+    if(mensagens.text.length > 100){
+        return false;
+    }
     if (mensagens.type === "private_message" ){
-        if(mensagens.from != usuario){
-            return false;
+        if(mensagens.from === usuario.name){
+            return true;
         }
-        if(mensagens.to != usuario || mensagens.to != 'Todos'){
+        if(mensagens.to === usuario.name || mensagens.to === "Todos"){
+            return true;
+        }else{
             return false;
         }
     }
     return true;
 }
 
-function filtrarUser(user){
-    if(user.name === usuario){
-        return false;
+function filtrarUser(usuariosAtivos){
+    if(usuariosAtivos.name != usuario.name){
+        return true;
     }
-    return true;
-}
+    return false;
+};
 
 const renovaChat = renova => {
     renovaStatus = renova.status;
@@ -90,7 +96,7 @@ function renderizaMensagens(){
     const documento = document.querySelector(".boxmensagens");
     documento.innerHTML = ``;
     console.log('entrei aqui');
-    let mensagemFiltrada = mensagens.filter(filtra);
+    mensagemFiltrada = mensagens.filter(filtra);
     console.log(mensagemFiltrada);
     for (let index = 0; index < mensagemFiltrada.length; index++) {
         if(mensagemFiltrada[index].type ==='status'){
@@ -131,7 +137,7 @@ function manterConectado() {
             promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", usuario);
             console.log('erro de usuario');
         }
-    },5000);
+    },9000);
 
     
     
@@ -147,8 +153,7 @@ function renderizaAtivos(){
             <ion-icon name="people"></ion-icon>
             <h2>Todos</h2>
         </div>` 
-    let auxFiltro = usuariosAtivos.filter(filtrarUser);
-    let filtroUser = auxFiltro.filter(filtrarUser)
+    let filtroUser = usuariosAtivos.filter(filtrarUser);
     for (let index = 0; index < filtroUser.length; index++) {
         documentoUser.innerHTML += `
         <div role="button" class="contato" onclick = 'seleciona(this,"seleciona-contato")'>
@@ -166,8 +171,11 @@ function selecionarAtributos(){
     userAtivo = selContato.querySelector("h2").innerHTML;
     mensagemTipo = selVisibilidade.querySelector("h3").innerHTML;
     documentoSel = document.querySelector(".enviavariado h4");
-    documentoSel.innerHTML = `Enviando para ${userAtivo}(${mensagemTipo})`;
-    document.querySelector(".ativos").classList.remove("mostrausers"); 
+    documentoSel.innerHTML = `Enviando para ${userAtivo}(${mensagemTipo})`; 
+    setTimeout(() => {
+        document.querySelector(".ativos").classList.remove("mostrausers");
+        selVisibilidade.classList.remove("seleciona-visibilidade");
+    }, 700);
 }
 
 function seleciona(elemento, usuarioMensagem){
@@ -191,6 +199,7 @@ function sair(conectado){
 }
 
 function logar(){
+    clearInterval(conectado);
     let nome = prompt("Digite seu usuario");
     usuario ={
         name: nome
