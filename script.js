@@ -154,6 +154,8 @@ function manterConectado() {
     },5000);
 } 
 
+
+
 function ativosContinuos(){
     if (ativosContinuamente === 0){
         ativosContinuamente =  setInterval(pegarAtivos, 10000);
