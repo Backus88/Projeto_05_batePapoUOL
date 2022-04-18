@@ -145,7 +145,6 @@ function renderizaMensagens(){
 
 function manterConectado() {
     let promessa = {};
-    let promise = 0;
     conectado = setInterval(() => {
         promessa = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", usuario);
         promessa.then(mantemConectado);
