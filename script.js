@@ -47,6 +47,8 @@ const trataAcerto = acerto =>{
     pegou = acerto;
     tokenMensagens = setInterval(pegarMensagens,3000) ;
     manterConectado();
+    document.querySelector(".home").classList.add("somepagina");
+    document.querySelector(".principal").classList.add("mostrausers");
 };
 const pegaDados = resposta =>{
     mensagens = resposta.data;
@@ -198,16 +200,24 @@ function sair(conectado){
     clearInterval(conectado);
 }
 
+function renderizaEspera(){
+    
+}
+
 function logar(){
     clearInterval(conectado);
-    let nome = prompt("Digite seu usuario");
+    let nome = document.querySelector(".botaologar").value;
     usuario ={
         name: nome
     } ;
-    let promessa = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", usuario);
-    promessa.then(trataAcerto);
-    promessa.catch(trataErro);
+    document.querySelector(".paginalogin").classList.add("somepagina");
+    document.querySelector(".esperalogin").classList.add("mostrausers");
+    setTimeout(() => {
+        let promessa = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", usuario);
+        promessa.then(trataAcerto);
+        promessa.catch(trataErro);
+    }, 3000);
+    
 
 }
 
-logar();

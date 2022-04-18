@@ -6,6 +6,69 @@ body::-webkit-scrollbar {
     display: none;
   }
 
+.home{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #ffffff;
+}
+
+.home img{
+    margin: 100px 0px;
+    width: 130px;
+    height: 93px;
+}
+
+.paginalogin{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+}
+.paginalogin input {
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 261px;
+    height: 54px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    margin-bottom: 15px;
+}
+
+.paginalogin button{
+    width: 109px;
+    height: 45px;
+    border-radius: 9px;
+    border: 0px;
+    background-color: #E7E7E7;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.esperalogin{
+    display: none;
+    width: auto;
+    height: auto;
+}
+.esperalogin img{
+    width: 200px;
+    height: 200px;
+}
+
+.principal{
+    width: auto;
+    height: auto;
+    display: none;
+}
+
 .menusuperior{
     top: 0;
     left: 0;
@@ -236,14 +299,17 @@ span{
     height: 21px;
 }
 
-.mostrausers{
-    display: inline;
-}
-
 .seleciona-contato{
     background-color: green
 }
 
 .seleciona-visibilidade{
     background-color: blue;
+}
+.mostrausers{
+    display: inline;
+}
+
+.somepagina{
+    display: none;
 }
