@@ -139,7 +139,7 @@ function manterConectado() {
             promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", usuario);
             console.log('erro de usuario');
         }
-    },9000);
+    },5000);
 
     
     
