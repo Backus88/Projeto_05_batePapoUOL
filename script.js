@@ -196,14 +196,6 @@ function seleciona(elemento, usuarioMensagem){
    
 }
 
-function sair(conectado){
-    clearInterval(conectado);
-}
-
-function renderizaEspera(){
-    
-}
-
 function logar(){
     clearInterval(conectado);
     let nome = document.querySelector(".botaologar").value;

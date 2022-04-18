@@ -94,11 +94,9 @@ body::-webkit-scrollbar {
     background-color: #ffffff;
 }
 
-.menusuperior ion-icon{
+.menusuperior button ion-icon{
     width: 42.19px;
     height: 30.94px;
-    margin-right: 3%;
-    background-color: #ffffff;
 }
 
 .boxmensagens{
@@ -300,11 +298,11 @@ span{
 }
 
 .seleciona-contato{
-    background-color: green
+    filter: drop-shadow(0 0 0.08rem crimson);
 }
 
 .seleciona-visibilidade{
-    background-color: blue;
+    filter: drop-shadow(0 0 0.08rem crimson);
 }
 .mostrausers{
     display: inline;
@@ -312,4 +310,8 @@ span{
 
 .somepagina{
     display: none;
+}
+
+ion-icon:hover{
+    filter: drop-shadow(0 0 0.15rem rgb(51, 51, 51));
 }
