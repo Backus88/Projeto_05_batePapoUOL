@@ -12,6 +12,8 @@ let selecionado = 0;
 let userAtivo = 0;
 let mensagemTipo = 0;
 let mensagemFiltrada = 0;
+let ativosContinuamente = 0;
+let click = false;
 
 function filtra(mensagens){
     if(mensagens.text.length > 100){
@@ -41,7 +43,24 @@ const renovaChat = renova => {
     renovaStatus = renova.status;
     pegarMensagens();
 }
-const trataErro = erro => naoPegou= erro.response;
+const trataErro = erro => {
+    if(erro.response.status == 400){
+        alert('usuario existente use outro');
+        window.location.reload();
+    }
+};
+const trataErroConectado = erro => {
+    if(erro.response.status == 400){
+        console.log('usuario nao conectado');
+        axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", usuario);
+    }
+};
+const trataErroMensagem = erro =>{ 
+    if(erro.response.status === 400){
+        alert('usuario inativo');
+        setTimeout(pegarAtivos(),1000);
+    }
+};
 const mantemConectado = acerto => conectou = acerto;
 const trataAcerto = acerto =>{
     pegou = acerto;
@@ -87,10 +106,7 @@ function enviarMensagem(){
 
     const promessa = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages",objetoMensagem);
     promessa.then(renovaChat);
-    promessa.catch(trataErro);
-    if(naoPegou){
-        console.log(naoPegou);
-    }
+    promessa.catch(trataErroMensagem);
     document.querySelector(".enviamensagem").value = '';
 }
 
@@ -133,17 +149,20 @@ function manterConectado() {
     conectado = setInterval(() => {
         promessa = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", usuario);
         promessa.then(mantemConectado);
-        promessa.catch(trataErro);
+        promessa.catch(trataErroConectado);
         console.log('conectado');
-        if(naoPegou.status === 400){
-            promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", usuario);
-            console.log('erro de usuario');
-        }
-    },9000);
+    },5000);
+} 
 
-    
-    
-}
+function ativosContinuos(){
+    if (ativosContinuamente === 0){
+        ativosContinuamente =  setInterval(pegarAtivos, 10000);
+    }else{
+        pegarAtivos();
+    };
+    click = true;
+} 
+   
 function pegarAtivos(){
     const promessa = axios.get("https://mock-api.driven.com.br/api/v6/uol/participants");
     promessa.then(usersAtivos);
@@ -163,8 +182,10 @@ function renderizaAtivos(){
             <h2>${filtroUser[index].name}</h2>
         </div>`   
     }
-
-    document.querySelector(".ativos").classList.add("mostrausers");
+    if(click){
+        document.querySelector(".ativos").classList.add("mostrausers");
+    }
+    
 }
 
 function selecionarAtributos(){
@@ -192,12 +213,14 @@ function seleciona(elemento, usuarioMensagem){
     };
     if(document.querySelector(".seleciona-contato")&&document.querySelector(".seleciona-visibilidade")){
         selecionarAtributos();
+        click = false;
     };
    
 }
 
 function logar(){
     clearInterval(conectado);
+    clearInterval(tokenMensagens);
     let nome = document.querySelector(".botaologar").value;
     usuario ={
         name: nome
@@ -212,4 +235,10 @@ function logar(){
     
 
 }
+const mensagemlistener = document.querySelector(".enviamensagem");
+mensagemlistener.addEventListener("keydown", function (event) {
+    if(event.key === "Enter"){
+        enviarMensagem();
+    }
 
+},true);    
