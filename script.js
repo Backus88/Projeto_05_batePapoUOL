@@ -150,7 +150,7 @@ function manterConectado() {
         promessa.then(mantemConectado);
         promessa.catch(trataErroConectado);
         console.log('conectado');
-    },5000);
+    },4000);
 } 
 
 
